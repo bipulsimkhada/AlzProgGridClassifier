@@ -28,27 +28,17 @@ def create_dataset():
 
 def createOutputLabels(Labels):
     Labels = Labels[targets]
-    output=np.zeros(shape=(len(Labels),12))    
+    
+    output = np.zeros((len(Labels), 4, 3))
     
     for i in range(len(Labels)):
-        for j in range (4):
-            if Labels.iloc[i,j]=='CN':
-                output[i,j*3]=1
-                output[i,j*3+1]=0
-                output[i,j*3+2]=0
-
+        for j in range(4):
+            if Labels.iloc[i, j] == 'CN':
+                output[i, j, 0] = 1
+            elif Labels.iloc[i, j] == 'MCI':
+                output[i, j, 1] = 1
+            elif Labels.iloc[i, j] == 'AD':
+                output[i, j, 2] = 1
                 
-            elif Labels.iloc[i,j]=='MCI':
-                output[i,j*3]=0
-                output[i,j*3+1]=1
-                output[i,j*3+2]=0
-                
-            elif Labels.iloc[i,j]=='AD':
-                output[i,j*3]=0
-                output[i,j*3+1]=0
-                output[i,j*3+2]=1
-                
-            # plt.figure()
-            # plt.imshow(OutputImages[19,:,:,:])
     return output
 

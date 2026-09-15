@@ -21,7 +21,7 @@ class ModalityEncoder(keras.Model):
 
     def __init__(
         self,
-        hidden_units: List[int],
+        hidden_units: tuple[int],
         modality_name: str,
         dropout_rate: float = 0.1,
         output_dim: int = 64,
