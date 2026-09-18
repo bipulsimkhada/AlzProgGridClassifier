@@ -12,7 +12,8 @@ for device in devices:
     tf.config.experimental.set_memory_growth(device,True)
 
 def main():
-    run_loss_stage("stage_1_severity")
+    # run_loss_stage("stage_1_severity")
+    run_loss_stage("stage_2_transition")
 
 if __name__ == "__main__":
     main()

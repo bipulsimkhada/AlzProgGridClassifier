@@ -1,5 +1,6 @@
 import os
 import json
+import gc
 from copy import deepcopy
 from pathlib import Path
 from typing import Literal
@@ -380,5 +381,20 @@ def cross_validation(
             f"epochs_trained={epochs_trained}, "
             f"best_val_loss={best_val_loss:.5f}"
         )
+
+        #clean up
+        del alz_prog_net
+        del fold_model
+        del loss_fn
+        del optimizer
+        del history
+        del X_train_raw, X_val_raw
+        del X_train_scaled, X_val_scaled
+        del X_train, X_val
+        del y_train, y_val
+        del y_pred
+
+        keras.backend.clear_session()
+        gc.collect()
 
     return all_fold_results

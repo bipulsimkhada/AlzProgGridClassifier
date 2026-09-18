@@ -58,7 +58,7 @@ def run_loss_stage(stage_name):
             groups_train,
             ("mri", "pet", "cog", "csf", "rf"),
             run_name=f"loss/{config["name"]}",
-            n_splits=5,
+            n_splits=10,
             random_state=RANDOM_STATE,
             imputer="median",
             scaling="min-max",
